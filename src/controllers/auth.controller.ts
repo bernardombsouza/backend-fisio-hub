@@ -17,7 +17,7 @@ const sendError = (res: Response, message: string, statusCode = 400) => {
 
 export const register = async (req: Request, res: Response): Promise<any> => {
   try {
-    const { fullName, email, crefito, password, confirmPassword,specialty, location, city, state, consultPrice, slotDuration, bio, clinicName, tags
+    const { fullName, email, crefito, password, confirmPassword,speciality, location, city, state, consultPrice, slotDuration, bio, clinicName, tags, avatarUrl
      } = req.body;
 
     if (password !== confirmPassword) return sendError(res, 'As senhas não coincidem.');
@@ -32,11 +32,12 @@ export const register = async (req: Request, res: Response): Promise<any> => {
         fullName,
         email,
         password: hashedPassword,
+        avatarUrl: avatarUrl ?? '',
         role: crefito ? "PHYSIO" : "PATIENT",
         professionalProfile: crefito ? {
           create: {
             crefito,
-            specialty: specialty ?? '',
+            speciality: speciality ?? '',
             location: location ?? '',
             city: city ?? '',
             state: state ?? '',
@@ -71,7 +72,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
   try {
     const { email, password } = req.body;
 
-    const user = await prisma.user.findUnique({ where: { email } });
+    const user = await prisma.user.findUnique({ where: { email }, include: { professionalProfile: true } });
     if (!user) return sendError(res, 'Credenciais inválidas.', 401);
 
     const validPassword = await bcrypt.compare(password, user.password);
@@ -81,7 +82,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
     const refreshToken = jwt.sign({ userId: user.id }, JWT_REFRESH_SECRET, { expiresIn: '7d' });
 
     const { password: _, ...userWithoutPassword } = user;
-
+    console.log(user)
     return sendResponse(res, { accessToken, refreshToken, user: userWithoutPassword }, 'Login efetuado com sucesso!');
   } catch (error) {
     return sendError(res, 'Erro interno ao realizar login.', 500);

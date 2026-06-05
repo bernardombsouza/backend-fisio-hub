@@ -137,7 +137,7 @@ exports.Prisma.RefreshTokenScalarFieldEnum = {
 exports.Prisma.ProfessionalScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  specialty: 'specialty',
+  speciality: 'speciality',
   crefito: 'crefito',
   location: 'location',
   city: 'city',

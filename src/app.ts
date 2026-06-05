@@ -1,5 +1,5 @@
 import { Server } from 'node:net';
-import { auth } from './routes/index'
+import { auth, professionals, appointments } from './routes/index'
 import express,{ Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 
@@ -28,6 +28,8 @@ server.use((request, response, next) => {
 })
 server.use('/public', express.static('public'));
 server.use('/api/auth', auth.default);
+server.use('/api/professionals', professionals.default);
+server.use('/api/appointments', appointments.default);
 server.use(async (request: Request, response: Response, next: NextFunction) => {
   next(response.status(400).json({ error: 'Router do not exists' }));
 })

@@ -3639,7 +3639,7 @@ export namespace Prisma {
   export type ProfessionalMinAggregateOutputType = {
     id: string | null
     userId: string | null
-    specialty: string | null
+    speciality: string | null
     crefito: string | null
     location: string | null
     city: string | null
@@ -3663,7 +3663,7 @@ export namespace Prisma {
   export type ProfessionalMaxAggregateOutputType = {
     id: string | null
     userId: string | null
-    specialty: string | null
+    speciality: string | null
     crefito: string | null
     location: string | null
     city: string | null
@@ -3687,7 +3687,7 @@ export namespace Prisma {
   export type ProfessionalCountAggregateOutputType = {
     id: number
     userId: number
-    specialty: number
+    speciality: number
     crefito: number
     location: number
     city: number
@@ -3739,7 +3739,7 @@ export namespace Prisma {
   export type ProfessionalMinAggregateInputType = {
     id?: true
     userId?: true
-    specialty?: true
+    speciality?: true
     crefito?: true
     location?: true
     city?: true
@@ -3763,7 +3763,7 @@ export namespace Prisma {
   export type ProfessionalMaxAggregateInputType = {
     id?: true
     userId?: true
-    specialty?: true
+    speciality?: true
     crefito?: true
     location?: true
     city?: true
@@ -3787,7 +3787,7 @@ export namespace Prisma {
   export type ProfessionalCountAggregateInputType = {
     id?: true
     userId?: true
-    specialty?: true
+    speciality?: true
     crefito?: true
     location?: true
     city?: true
@@ -3898,7 +3898,7 @@ export namespace Prisma {
   export type ProfessionalGroupByOutputType = {
     id: string
     userId: string
-    specialty: string
+    speciality: string
     crefito: string
     location: string
     city: string
@@ -3941,7 +3941,7 @@ export namespace Prisma {
   export type ProfessionalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    specialty?: boolean
+    speciality?: boolean
     crefito?: boolean
     location?: boolean
     city?: boolean
@@ -3969,7 +3969,7 @@ export namespace Prisma {
   export type ProfessionalSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    specialty?: boolean
+    speciality?: boolean
     crefito?: boolean
     location?: boolean
     city?: boolean
@@ -3994,7 +3994,7 @@ export namespace Prisma {
   export type ProfessionalSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    specialty?: boolean
+    speciality?: boolean
     crefito?: boolean
     location?: boolean
     city?: boolean
@@ -4019,7 +4019,7 @@ export namespace Prisma {
   export type ProfessionalSelectScalar = {
     id?: boolean
     userId?: boolean
-    specialty?: boolean
+    speciality?: boolean
     crefito?: boolean
     location?: boolean
     city?: boolean
@@ -4040,7 +4040,7 @@ export namespace Prisma {
     isVerified?: boolean
   }
 
-  export type ProfessionalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "specialty" | "crefito" | "location" | "city" | "state" | "lat" | "lng" | "distanceKm" | "rating" | "reviewCount" | "consultPrice" | "slotDuration" | "bio" | "clinicName" | "experienceYears" | "successRate" | "totalPatients" | "tags" | "isVerified", ExtArgs["result"]["professional"]>
+  export type ProfessionalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "speciality" | "crefito" | "location" | "city" | "state" | "lat" | "lng" | "distanceKm" | "rating" | "reviewCount" | "consultPrice" | "slotDuration" | "bio" | "clinicName" | "experienceYears" | "successRate" | "totalPatients" | "tags" | "isVerified", ExtArgs["result"]["professional"]>
   export type ProfessionalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     slots?: boolean | Professional$slotsArgs<ExtArgs>
@@ -4064,7 +4064,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
-      specialty: string
+      speciality: string
       crefito: string
       location: string
       city: string
@@ -4511,7 +4511,7 @@ export namespace Prisma {
   interface ProfessionalFieldRefs {
     readonly id: FieldRef<"Professional", 'String'>
     readonly userId: FieldRef<"Professional", 'String'>
-    readonly specialty: FieldRef<"Professional", 'String'>
+    readonly speciality: FieldRef<"Professional", 'String'>
     readonly crefito: FieldRef<"Professional", 'String'>
     readonly location: FieldRef<"Professional", 'String'>
     readonly city: FieldRef<"Professional", 'String'>
@@ -8474,7 +8474,7 @@ export namespace Prisma {
   export const ProfessionalScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    specialty: 'specialty',
+    speciality: 'speciality',
     crefito: 'crefito',
     location: 'location',
     city: 'city',
@@ -8731,7 +8731,7 @@ export namespace Prisma {
     NOT?: ProfessionalWhereInput | ProfessionalWhereInput[]
     id?: StringFilter<"Professional"> | string
     userId?: StringFilter<"Professional"> | string
-    specialty?: StringFilter<"Professional"> | string
+    speciality?: StringFilter<"Professional"> | string
     crefito?: StringFilter<"Professional"> | string
     location?: StringFilter<"Professional"> | string
     city?: StringFilter<"Professional"> | string
@@ -8758,7 +8758,7 @@ export namespace Prisma {
   export type ProfessionalOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    specialty?: SortOrder
+    speciality?: SortOrder
     crefito?: SortOrder
     location?: SortOrder
     city?: SortOrder
@@ -8789,7 +8789,7 @@ export namespace Prisma {
     AND?: ProfessionalWhereInput | ProfessionalWhereInput[]
     OR?: ProfessionalWhereInput[]
     NOT?: ProfessionalWhereInput | ProfessionalWhereInput[]
-    specialty?: StringFilter<"Professional"> | string
+    speciality?: StringFilter<"Professional"> | string
     location?: StringFilter<"Professional"> | string
     city?: StringFilter<"Professional"> | string
     state?: StringFilter<"Professional"> | string
@@ -8815,7 +8815,7 @@ export namespace Prisma {
   export type ProfessionalOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    specialty?: SortOrder
+    speciality?: SortOrder
     crefito?: SortOrder
     location?: SortOrder
     city?: SortOrder
@@ -8847,7 +8847,7 @@ export namespace Prisma {
     NOT?: ProfessionalScalarWhereWithAggregatesInput | ProfessionalScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Professional"> | string
     userId?: StringWithAggregatesFilter<"Professional"> | string
-    specialty?: StringWithAggregatesFilter<"Professional"> | string
+    speciality?: StringWithAggregatesFilter<"Professional"> | string
     crefito?: StringWithAggregatesFilter<"Professional"> | string
     location?: StringWithAggregatesFilter<"Professional"> | string
     city?: StringWithAggregatesFilter<"Professional"> | string
@@ -9243,7 +9243,7 @@ export namespace Prisma {
 
   export type ProfessionalCreateInput = {
     id?: string
-    specialty: string
+    speciality: string
     crefito: string
     location: string
     city: string
@@ -9270,7 +9270,7 @@ export namespace Prisma {
   export type ProfessionalUncheckedCreateInput = {
     id?: string
     userId: string
-    specialty: string
+    speciality: string
     crefito: string
     location: string
     city: string
@@ -9295,7 +9295,7 @@ export namespace Prisma {
 
   export type ProfessionalUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    specialty?: StringFieldUpdateOperationsInput | string
+    speciality?: StringFieldUpdateOperationsInput | string
     crefito?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
@@ -9322,7 +9322,7 @@ export namespace Prisma {
   export type ProfessionalUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    specialty?: StringFieldUpdateOperationsInput | string
+    speciality?: StringFieldUpdateOperationsInput | string
     crefito?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
@@ -9348,7 +9348,7 @@ export namespace Prisma {
   export type ProfessionalCreateManyInput = {
     id?: string
     userId: string
-    specialty: string
+    speciality: string
     crefito: string
     location: string
     city: string
@@ -9371,7 +9371,7 @@ export namespace Prisma {
 
   export type ProfessionalUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    specialty?: StringFieldUpdateOperationsInput | string
+    speciality?: StringFieldUpdateOperationsInput | string
     crefito?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
@@ -9395,7 +9395,7 @@ export namespace Prisma {
   export type ProfessionalUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    specialty?: StringFieldUpdateOperationsInput | string
+    speciality?: StringFieldUpdateOperationsInput | string
     crefito?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
@@ -9895,7 +9895,7 @@ export namespace Prisma {
   export type ProfessionalCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    specialty?: SortOrder
+    speciality?: SortOrder
     crefito?: SortOrder
     location?: SortOrder
     city?: SortOrder
@@ -9932,7 +9932,7 @@ export namespace Prisma {
   export type ProfessionalMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    specialty?: SortOrder
+    speciality?: SortOrder
     crefito?: SortOrder
     location?: SortOrder
     city?: SortOrder
@@ -9956,7 +9956,7 @@ export namespace Prisma {
   export type ProfessionalMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    specialty?: SortOrder
+    speciality?: SortOrder
     crefito?: SortOrder
     location?: SortOrder
     city?: SortOrder
@@ -10752,7 +10752,7 @@ export namespace Prisma {
 
   export type ProfessionalCreateWithoutUserInput = {
     id?: string
-    specialty: string
+    speciality: string
     crefito: string
     location: string
     city: string
@@ -10777,7 +10777,7 @@ export namespace Prisma {
 
   export type ProfessionalUncheckedCreateWithoutUserInput = {
     id?: string
-    specialty: string
+    speciality: string
     crefito: string
     location: string
     city: string
@@ -10880,7 +10880,7 @@ export namespace Prisma {
 
   export type ProfessionalUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    specialty?: StringFieldUpdateOperationsInput | string
+    speciality?: StringFieldUpdateOperationsInput | string
     crefito?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
@@ -10905,7 +10905,7 @@ export namespace Prisma {
 
   export type ProfessionalUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    specialty?: StringFieldUpdateOperationsInput | string
+    speciality?: StringFieldUpdateOperationsInput | string
     crefito?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
@@ -11170,7 +11170,7 @@ export namespace Prisma {
 
   export type ProfessionalCreateWithoutSlotsInput = {
     id?: string
-    specialty: string
+    speciality: string
     crefito: string
     location: string
     city: string
@@ -11196,7 +11196,7 @@ export namespace Prisma {
   export type ProfessionalUncheckedCreateWithoutSlotsInput = {
     id?: string
     userId: string
-    specialty: string
+    speciality: string
     crefito: string
     location: string
     city: string
@@ -11236,7 +11236,7 @@ export namespace Prisma {
 
   export type ProfessionalUpdateWithoutSlotsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    specialty?: StringFieldUpdateOperationsInput | string
+    speciality?: StringFieldUpdateOperationsInput | string
     crefito?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
@@ -11262,7 +11262,7 @@ export namespace Prisma {
   export type ProfessionalUncheckedUpdateWithoutSlotsInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    specialty?: StringFieldUpdateOperationsInput | string
+    speciality?: StringFieldUpdateOperationsInput | string
     crefito?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
@@ -11315,7 +11315,7 @@ export namespace Prisma {
 
   export type ProfessionalCreateWithoutAppointmentsInput = {
     id?: string
-    specialty: string
+    speciality: string
     crefito: string
     location: string
     city: string
@@ -11341,7 +11341,7 @@ export namespace Prisma {
   export type ProfessionalUncheckedCreateWithoutAppointmentsInput = {
     id?: string
     userId: string
-    specialty: string
+    speciality: string
     crefito: string
     location: string
     city: string
@@ -11443,7 +11443,7 @@ export namespace Prisma {
 
   export type ProfessionalUpdateWithoutAppointmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    specialty?: StringFieldUpdateOperationsInput | string
+    speciality?: StringFieldUpdateOperationsInput | string
     crefito?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
@@ -11469,7 +11469,7 @@ export namespace Prisma {
   export type ProfessionalUncheckedUpdateWithoutAppointmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    specialty?: StringFieldUpdateOperationsInput | string
+    speciality?: StringFieldUpdateOperationsInput | string
     crefito?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
