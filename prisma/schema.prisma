@@ -8,14 +8,98 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  fullName  String
-  email     String   @unique
-  password  String  
-  role      String   @default("PHYSIO") // Removido o enum
-  crefito   String?
-  avatarUrl String?
-  createdAt DateTime @default(now())
+  id            String         @id @default(cuid())
+  fullName      String
+  email         String         @unique
+  password      String
+  // Enum Role substituído por String
+  role          String         @default("PATIENT")
+  avatarUrl     String?
+  createdAt     DateTime       @default(now())
+  refreshTokens RefreshToken[]
+  appointments  Appointment[]
+  professionalProfile Professional?         // preenchido só se role = PHYSIO
+}
 
-  @@map("users")
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+}
+
+model Professional {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // dados específicos do fisioterapeuta
+  specialty       String
+  crefito         String   @unique
+  location        String
+  city            String
+  state           String
+  lat             Float    @default(0)
+  lng             Float    @default(0)
+  distanceKm      Float    @default(0)
+  rating          Float    @default(0)
+  reviewCount     Int      @default(0)
+  consultPrice    Float
+  slotDuration    Int      // minutos
+  bio             String
+  clinicName      String?
+  experienceYears Int      @default(0)
+  successRate     Float    @default(0)
+  totalPatients   Int      @default(0)
+  tags            String
+  isVerified      Boolean  @default(false)
+
+  slots        AvailableSlot[]
+  appointments Appointment[]
+}
+
+model AvailableSlot {
+  id             String       @id @default(cuid())
+  professionalId String
+  professional   Professional @relation(fields: [professionalId], references: [id])
+  date           DateTime     // SQLite trata DateTime como string/iso8601
+  startTime      String
+  endTime        String
+  available      Boolean      @default(true)
+}
+
+model Appointment {
+  id               String      @id @default(cuid())
+  patientId        String
+  patient          User        @relation(fields: [patientId], references: [id])
+  physioId         String
+  professional     Professional @relation(fields: [physioId], references: [id])
+  physioName       String
+  physioSpecialty  String
+  startTime        DateTime
+  endTime          DateTime
+  durationMinutes  Int
+  consultPrice     Float
+  platformFee      Float
+  totalAmount      Float
+  // Enum AppointmentStatus substituído por String
+  status           String      @default("PENDING_PAYMENT")
+  notes            String?
+  payment          Payment?
+  createdAt        DateTime    @default(now())
+}
+
+model Payment {
+  id            String        @id @default(cuid())
+  appointmentId String        @unique
+  appointment   Appointment   @relation(fields: [appointmentId], references: [id])
+  // Enums substituídos por String
+  method        String
+  status        String        @default("PENDING")
+  pixQrCode     String?
+  pixKey        String?
+  boletoUrl     String?
+  boletoBarCode String?
+  createdAt     DateTime      @default(now())
 }

@@ -123,8 +123,76 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   role: 'role',
-  crefito: 'crefito',
   avatarUrl: 'avatarUrl',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  userId: 'userId',
+  expiresAt: 'expiresAt'
+};
+
+exports.Prisma.ProfessionalScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  specialty: 'specialty',
+  crefito: 'crefito',
+  location: 'location',
+  city: 'city',
+  state: 'state',
+  lat: 'lat',
+  lng: 'lng',
+  distanceKm: 'distanceKm',
+  rating: 'rating',
+  reviewCount: 'reviewCount',
+  consultPrice: 'consultPrice',
+  slotDuration: 'slotDuration',
+  bio: 'bio',
+  clinicName: 'clinicName',
+  experienceYears: 'experienceYears',
+  successRate: 'successRate',
+  totalPatients: 'totalPatients',
+  tags: 'tags',
+  isVerified: 'isVerified'
+};
+
+exports.Prisma.AvailableSlotScalarFieldEnum = {
+  id: 'id',
+  professionalId: 'professionalId',
+  date: 'date',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  available: 'available'
+};
+
+exports.Prisma.AppointmentScalarFieldEnum = {
+  id: 'id',
+  patientId: 'patientId',
+  physioId: 'physioId',
+  physioName: 'physioName',
+  physioSpecialty: 'physioSpecialty',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  durationMinutes: 'durationMinutes',
+  consultPrice: 'consultPrice',
+  platformFee: 'platformFee',
+  totalAmount: 'totalAmount',
+  status: 'status',
+  notes: 'notes',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.PaymentScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  method: 'method',
+  status: 'status',
+  pixQrCode: 'pixQrCode',
+  pixKey: 'pixKey',
+  boletoUrl: 'boletoUrl',
+  boletoBarCode: 'boletoBarCode',
   createdAt: 'createdAt'
 };
 
@@ -140,7 +208,12 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  RefreshToken: 'RefreshToken',
+  Professional: 'Professional',
+  AvailableSlot: 'AvailableSlot',
+  Appointment: 'Appointment',
+  Payment: 'Payment'
 };
 
 /**
