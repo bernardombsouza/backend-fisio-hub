@@ -17,7 +17,8 @@ const sendError = (res: Response, message: string, statusCode = 400) => {
 
 export const register = async (req: Request, res: Response): Promise<any> => {
   try {
-    const { fullName, email, crefito, password, confirmPassword } = req.body;
+    const { fullName, email, crefito, password, confirmPassword,specialty, location, city, state, consultPrice, slotDuration, bio, clinicName, tags
+     } = req.body;
 
     if (password !== confirmPassword) return sendError(res, 'As senhas não coincidem.');
 
@@ -31,10 +32,32 @@ export const register = async (req: Request, res: Response): Promise<any> => {
         fullName,
         email,
         password: hashedPassword,
-        crefito,
         role: crefito ? "PHYSIO" : "PATIENT",
+        professionalProfile: crefito ? {
+          create: {
+            crefito,
+            specialty: specialty ?? '',
+            location: location ?? '',
+            city: city ?? '',
+            state: state ?? '',
+            lat: 0,
+            lng: 0,
+            distanceKm: 0,
+            rating: 0,
+            reviewCount: 0,
+            consultPrice: consultPrice ?? 0,
+            slotDuration: slotDuration ?? 0,
+            bio: bio ?? '',
+            clinicName: clinicName ?? '',
+            experienceYears: 0,
+            successRate: 0,
+            totalPatients: 0,
+            tags: tags ?? '',
+            isVerified: false
+          }
+        } : undefined
       },
-      select: { id: true, fullName: true, email: true, role: true, crefito: true, avatarUrl: true, createdAt: true }
+      select: { id: true, fullName: true, email: true, role: true, avatarUrl: true, createdAt: true, professionalProfile: true }
     });
 
     return sendResponse(res, { user }, 'Cadastro realizado com sucesso!', true, 201);
