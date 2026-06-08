@@ -8,7 +8,8 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
   }
   const [, token] = authToken.split(' ');
   try {
-    const payload = jwt.verify(token, '3004b458-6598-4dfe-9237-fff3c7df9517') as jwt.JwtPayload;
+    const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key';
+    const payload = jwt.verify(token, JWT_SECRET) as jwt.JwtPayload;
     (request as any).userId = payload.userId;
     return next();
   } catch (e) {

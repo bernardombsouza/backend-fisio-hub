@@ -81,11 +81,40 @@ export const login = async (req: Request, res: Response): Promise<any> => {
     const accessToken = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '1h' });
     const refreshToken = jwt.sign({ userId: user.id }, JWT_REFRESH_SECRET, { expiresIn: '7d' });
 
+    await prisma.refreshToken.create({
+      data: {
+        token: refreshToken,
+        userId: user.id,
+        expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+      }
+    });
+
     const { password: _, ...userWithoutPassword } = user;
-    console.log(user)
     return sendResponse(res, { accessToken, refreshToken, user: userWithoutPassword }, 'Login efetuado com sucesso!');
   } catch (error) {
     return sendError(res, 'Erro interno ao realizar login.', 500);
+  }
+};
+
+export const refresh = async (req: Request, res: Response): Promise<any> => {
+  try {
+    const { refreshToken } = req.body;
+    if (!refreshToken) return sendError(res, 'Refresh token ausente.', 401);
+
+    const stored = await prisma.refreshToken.findUnique({ where: { token: refreshToken } });
+    if (!stored) return sendError(res, 'Refresh token inválido.', 401);
+
+    if (stored.expiresAt < new Date()) {
+      await prisma.refreshToken.delete({ where: { token: refreshToken } });
+      return sendError(res, 'Refresh token expirado. Faça login novamente.', 401);
+    }
+
+    const payload = jwt.verify(refreshToken, JWT_REFRESH_SECRET) as jwt.JwtPayload;
+    const newAccessToken = jwt.sign({ userId: payload.userId }, JWT_SECRET, { expiresIn: '1h' });
+
+    return sendResponse(res, { accessToken: newAccessToken }, 'Token renovado com sucesso.');
+  } catch (error) {
+    return sendError(res, 'Refresh token inválido.', 401);
   }
 };
 
@@ -94,5 +123,13 @@ export const forgotPassword = async (req: Request, res: Response): Promise<any> 
 };
 
 export const logout = async (req: Request, res: Response): Promise<any> => {
-  return sendResponse(res, null, 'Logout realizado com sucesso.');
+  try {
+    const { refreshToken } = req.body;
+    if (refreshToken) {
+      await prisma.refreshToken.deleteMany({ where: { token: refreshToken } });
+    }
+    return sendResponse(res, null, 'Logout realizado com sucesso.');
+  } catch (error) {
+    return sendError(res, 'Erro interno ao realizar logout.', 500);
+  }
 };
